@@ -1,6 +1,16 @@
-describe('Pruebas de Strings');
+import { mensaje } from './string';
+// describe('Pruebas de Strings');
+// it('Debe de regresar un string');
 
 
-it('Debe de regresar un string');
+describe('Pruebas de Strings', () => {
 
-it('Debe de contener un nombre');
+    it( 'Debe de regresar un string', () => {
+
+        const resp = mensaje('Guillermo');
+
+        expect( typeof resp  ).toBe('string');
+    });
+
+
+});
