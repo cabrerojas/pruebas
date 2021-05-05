@@ -1,4 +1,4 @@
-export function incremental(numero: number) {
+export function incremental(numero: number): number {
 
 
     if (numero > 100) {
