@@ -1,4 +1,4 @@
-import { Jugador } from "./clases";
+import { Jugador } from './clases';
 
 describe('Pruebas de Clases', () => {
 
@@ -10,7 +10,7 @@ describe('Pruebas de Clases', () => {
     });
     beforeEach( () => {
         // console.log('beforeEach');
-        //jugador.hp = 100;
+        // jugador.hp = 100;
         jugador = new Jugador();
 
     });
