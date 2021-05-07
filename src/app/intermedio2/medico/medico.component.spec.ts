@@ -12,7 +12,7 @@ describe('Medico Component', () => {
 
   beforeEach( () => {
     TestBed.configureTestingModule({
-        declarations:[
+        declarations: [
           MedicoComponent
         ],
         // providers:[ ],
@@ -27,7 +27,18 @@ describe('Medico Component', () => {
 
 
 
-  it('', () => {
+  it('Debe de crearse el componente', () => {
+
+    expect( componente ).toBeTruthy();
+
+  });
+
+  it('Debe de retornar el nombre del médico', () => {
+
+    const nombre = 'Angélica';
+    const mensaje = componente.saludarMedico(nombre);
+
+    expect( mensaje ).toContain(nombre);
 
   });
 
