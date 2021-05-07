@@ -1,7 +1,7 @@
 import { MedicosComponent } from './medicos.component';
 import { MedicosService } from './medicos.service';
 import { HttpClient } from '@angular/common/http';
-import { from, of } from 'rxjs';
+import { from, of, throwError } from 'rxjs';
 
 
 describe('MedicosComponent', () => {
@@ -54,6 +54,46 @@ describe('MedicosComponent', () => {
         componente.agregarMedico();
 
         expect(componente.medicos.indexOf(medico)).toBeGreaterThanOrEqual(0);
+    });
+
+
+    it('Si falla la adicion, la propiedad mensajeError, debe ser igual al error del servicio', () => {
+
+        const miError = 'No se puedo agregar el médico';
+
+        spyOn(servicio, 'agregarMedico').and
+                    .returnValue( throwError( miError ));
+
+        componente.agregarMedico();
+
+        expect(componente.mensajeError).toBe(miError);
+    });
+
+    it('Debe de llamar al servidor para borrar un médicos', () => {
+
+        spyOn( window, 'confirm' ).and.returnValue(true);
+
+        const espia = spyOn(servicio, 'borrarMedico').and
+                    .callFake(() => of());
+
+        componente.borrarMedico('1');
+
+        expect(espia).toHaveBeenCalledWith('1');
+
+    });
+
+
+    it('NO debe de llamar al servidor para borrar un médicos', () => {
+
+        spyOn( window, 'confirm' ).and.returnValue(false);
+
+        const espia = spyOn(servicio, 'borrarMedico').and
+                    .callFake(() => of());
+
+        componente.borrarMedico('1');
+
+        expect(espia).not.toHaveBeenCalledWith('1');
+
     });
 
 
