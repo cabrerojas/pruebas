@@ -61,5 +61,19 @@ describe('Incremendator Component', () => {
     });
 
 
+    it('Debe de incrementar el progreso en 5 en el HTML, con un clic en el botón', () => {
+        const botones = fixture.debugElement.queryAll( By.css('.btn-primary'));
+
+        botones[0].triggerEventHandler('click', null);
+
+        fixture.detectChanges(); // dispara la deteccion de cambios
+
+        const elem: HTMLElement = fixture.debugElement.query( By.css('h3') ).nativeElement;
+
+        expect(elem.innerHTML).toContain(`${component.progreso}`);
+
+    });
+
+
 
 });
