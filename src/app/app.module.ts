@@ -18,7 +18,9 @@ import { MedicoComponent } from './intermedio2/medico/medico.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
